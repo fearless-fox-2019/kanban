@@ -6,13 +6,13 @@
       </template>
 
       <v-card>
-        <v-card-title class="headline grey lighten-2" primary-title>{{ detail.title }}</v-card-title>
-
+        <v-card-title class="headline grey lighten-2" primary-title style="font-family: Varela Round, sans-serif; Exo 2, sans-serif;">{{ detail.title }}</v-card-title>
+ 
         <v-divider></v-divider>
 
-        <v-card-text>{{ detail.description }}</v-card-text>
-        <v-card-text>Point : {{ detail.point }}</v-card-text>
-        <v-card-text>Status : {{ detail.status }}</v-card-text>
+        <v-card-text style="color : black;">{{ detail.description }}</v-card-text>
+        <v-card-text style="color : black;">Point : {{ detail.point }}</v-card-text>
+        <v-card-text style="color : black;">Status : {{ detail.status }}</v-card-text>
 
         <v-divider></v-divider>
 
@@ -49,19 +49,14 @@ export default {
           console.error('Error removing document: ', error)
         })
       this.dialog = false
-      // db.collection("kanban")
-      //   .doc(this.detail.id)
-      //   .delete()
-      //   .then(() => {
-      //     console.log("Document successfully deleted!");
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error removing document: ", error);
-      //   });
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
+* {
+  font-family: "Varela Round", sans-serif;
+  font-family: "Exo 2", sans-serif;
+}
 </style>

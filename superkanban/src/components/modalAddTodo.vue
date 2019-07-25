@@ -12,6 +12,9 @@
           <v-container grid-list-md>
             <v-layout wrap>
               <v-flex xs12>
+                <v-text-field label="Assigned-To" v-model="inputAssigned" required></v-text-field>
+              </v-flex>
+              <v-flex xs12>
                 <v-text-field label="Title" v-model="inputTitle" required></v-text-field>
               </v-flex>
               <v-flex xs12>
@@ -53,6 +56,7 @@ export default {
   data () {
     return {
       dialog: false,
+      inputAssigned : '',
       inputTitle: '',
       inputDescription: '',
       inputPoint: '',

@@ -1,79 +1,48 @@
 <template>
   <v-content>
     <v-layout id="content" justify-space-between row fill-height text-center style="width : 100%;">
-      <v-flex xs3>
-        <h4>Back Log</h4>
-        <draggable v-model="backLog" group="kanban">
-          <div v-for="(data, i) in backLog" :key="i">
-            <v-card max-width="344" class="mx-auto">
-              <v-card-title>{{ data.title }}</v-card-title>
-
-              <v-divider></v-divider>
-
-              <v-card-text>
-                <h3>Point : {{ data.point }}</h3>
-              </v-card-text>
-              <v-card-actions>
-                <modalDetail :detail="data" />
-              </v-card-actions>
-            </v-card>
+      <v-flex xs3 class="px-1">
+        <div id="backlog">
+          <h4>Back Log</h4>
+        </div>
+        <draggable
+          v-model="backLog"
+          group="kanban"
+          @start="dragging = true"
+          @end="dragging = false"
+        >
+          <div v-for="(data, i) in backLog" :key="i" class="f1">
+            <cardContainer :dataTodo="data" />
           </div>
         </draggable>
       </v-flex>
-      <v-flex xs3>
-        <h4>To-Do</h4>
-        <draggable v-model="todo" group="kanban">
-          <div v-for="(data, i) in todo" :key="i">
-            <v-card max-width="344" class="mx-auto">
-              <v-card-title>{{ data.title }}</v-card-title>
-
-              <v-divider></v-divider>
-
-              <v-card-text>
-                <h3>Point : {{ data.point }}</h3>
-              </v-card-text>
-              <v-card-actions>
-                <modalDetail :detail="data" />
-              </v-card-actions>
-            </v-card>
+      <v-flex xs3 class="px-1">
+        <div id="todo">
+          <h4>To-Do</h4>
+        </div>
+        <draggable v-model="todo" group="kanban" @start="dragging = true" @end="dragging = false">
+          <div v-for="(data, i) in todo" :key="i" class="f1">
+            <cardContainer :dataTodo="data" />
           </div>
         </draggable>
       </v-flex>
-      <v-flex xs3>
-        <h4>Doing</h4>
-        <draggable v-model="doing" group="kanban">
-          <!-- <div > -->
-            <v-card v-for="(data, i) in doing" :key="i" max-width="344" class="mx-auto">
-              <v-card-title>{{ data.title }}</v-card-title>
-
-              <v-divider></v-divider>
-
-              <v-card-text>
-                <h3>Point : {{ data.point }}</h3>
-              </v-card-text>
-              <v-card-actions>
-                <modalDetail :detail="data" />
-              </v-card-actions>
-            </v-card>
-          <!-- </div> -->
+      <v-flex xs3 class="px-1">
+        <div id="doing">
+          <h4>Doing</h4>
+        </div>
+        <draggable v-model="doing" group="kanban" @start="dragging = true" @end="dragging = false">
+          <div v-for="(data, i) in doing" :key="i" class="f1">
+            <cardContainer :dataTodo="data" />
+          </div>
         </draggable>
       </v-flex>
-      <v-flex xs3>
-        <h4>Done</h4>
-        <draggable v-model="done" group="kanban">
-          <div v-for="(data, i) in done" :key="i">
-            <v-card max-width="344" class="mx-auto">
-              <v-card-title>{{ data.title }}</v-card-title>
-
-              <v-divider></v-divider>
-
-              <v-card-text>
-                <h3>Point : {{ data.point }}</h3>
-              </v-card-text>
-              <v-card-actions>
-                <modalDetail :detail="data" />
-              </v-card-actions>
-            </v-card>
+      <v-flex xs3 class="px-1">
+        <div id="done">
+          <h4>Done</h4>
+        </div>
+        <draggable v-model="done" group="kanban" @start="dragging = true" @end="dragging = false">
+          <div v-for="(data, i) in done" :key="i" class="f1">
+            <cardContainer :dataTodo="data" />
           </div>
         </draggable>
       </v-flex>
@@ -83,6 +52,7 @@
 <script>
 import db from "../apis/firebase";
 import modalDetail from "../components/modalDetail";
+import cardContainer from "../components/cardContent";
 import draggable from "vuedraggable";
 export default {
   props: {
@@ -90,10 +60,13 @@ export default {
   },
   components: {
     modalDetail,
-    draggable
+    draggable,
+    cardContainer
   },
   data: () => ({
     drawer: null,
+    dragging: false,
+    enabled: true,
     backLog: [],
     todo: [],
     doing: [],
@@ -198,10 +171,29 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 #content {
   margin-top: 30px;
   padding-left: 15px;
   padding-right: 15px;
+}
+.f1 {
+  margin-top: 10px;
+}
+#backlog {
+  height : 40px;
+  background-color: #F50057;
+}
+#todo {
+  height : 40px;
+  background-color: #1976D2;
+}
+#doing {
+  height : 40px;
+  background-color: #EF6C00;
+}
+#done {
+  height : 40px;
+  background-color: #FFEA00;
 }
 </style>

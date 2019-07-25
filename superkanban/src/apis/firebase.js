@@ -2,13 +2,12 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyAQbs20Kl8WVgqeFBim8s5c1V3H0xAT7JE',
-  authDomain: 'kanban-e13d5.firebaseapp.com',
-  databaseURL: 'https://kanban-e13d5.firebaseio.com',
-  projectId: 'kanban-e13d5',
-  storageBucket: 'kanban-e13d5.appspot.com',
-  messagingSenderId: '771858292793',
-  appId: '1:771858292793:web:d924b0dbf880cb79'
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_DATABASE_URL,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STOREAGE_BUCKET,
+  appId:process.env.VUE_APP_APP_ID
 })
 
 const db = firebase.firestore()

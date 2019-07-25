@@ -1,10 +1,10 @@
 <template>
   <div class="navbar-page">
-    <div>
-      <b-navbar variant="faded" type="light">
+    <div class="content-navbar">
+      <b-navbar variant="faded" class="content-navbar">
         <b-navbar-brand href="#">
-          <img src="https://placekitten.com/g/30/30" class="d-inline-block align-top" alt="Kitten" />
-          BootstrapVue
+          <img src="https://www.cprime.com/wp-content/uploads/2015/04/kanban.png" class="d-inline-block align-top" alt="Kanban" style="width:40px; height:40px;"/>
+          KanBannisasi
         </b-navbar-brand>
 
         <b-navbar-nav class="ml-auto">
@@ -60,51 +60,58 @@
   </div>
 </template>
 
-
 <script>
 
 import db from '../../config/firebase.js'
 
 export default {
-  data() {
+  data () {
     return {
-      newTask : {
-          name : "",
-          description : "",
-          point : "",
-          assignedto : ""
+      newTask: {
+        name: '',
+        description: '',
+        point: '',
+        assignedto: ''
       },
       nameState: null,
       submittedNames: []
-    };
+    }
   },
   methods: {
-    checkFormValidity() {
-      const valid = this.$refs.form.checkValidity();
-      this.nameState = valid ? "valid" : "invalid";
-      return valid;
+    checkFormValidity () {
+      const valid = this.$refs.form.checkValidity()
+      this.nameState = valid ? 'valid' : 'invalid'
+      return valid
     },
-    resetModal() {
-      this.name = "";
-      this.nameState = null;
+    resetModal () {
+      this.newTask = {
+        name: '',
+        description: '',
+        point: '',
+        assignedto: ''
+      }
     },
-    handleOk(bvModalEvt) {
+    handleOk (bvModalEvt) {
       // Prevent modal from closing
-      bvModalEvt.preventDefault();
+      bvModalEvt.preventDefault()
       // Trigger submit handler
-      this.handleSubmit();
+      this.handleSubmit()
     },
-    handleSubmit() {
+    handleSubmit () {
       this.newTask.status = 'Back-Log'
-     db.collection('Todo').add(this.newTask)
-      .then(ref => {
-        console.log(ref, "hihihiwww");
-        console.log('Added document with ID: ', ref.id);
-      });
+      db.collection('Todo').add(this.newTask)
+        .then(ref => {
+          console.log(ref, 'hihihiwww')
+          console.log('Added document with ID: ', ref.id)
+        })
     }
   }
-};
+}
 </script>
 
 <style>
+  .content-navbar{
+    background-color: #806443;
+    color: #fff;
+  }
 </style>

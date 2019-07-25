@@ -49,6 +49,7 @@ export default {
       } else if (param.Status == "Done") {
         param.Status = "Doing";
       }
+      param.date = new Date()
       delete param.id
       db.collection("todos")
         .doc(doc)
@@ -69,6 +70,7 @@ export default {
       } else if (param.Status == "Doing") {
         param.Status = "Done";
       }
+      param.date = new Date()
       delete param.id
       db.collection("todos")
         .doc(doc)

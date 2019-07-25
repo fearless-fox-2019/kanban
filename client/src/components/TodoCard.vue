@@ -14,7 +14,9 @@
 
     <v-container class="pa-2" fluid grid-list-md>
       <v-layout column>
-        <v-flex v-for="(card, i) in data" :key="i">
+        <draggable>
+          <transition-group>
+            <v-flex v-for="(card, i) in data" :key="i">
           <v-card>
             <v-list-item three-line>
               <v-list-item-content class="align-self-start">
@@ -29,6 +31,8 @@
             <i @click="deleteData(card)" class="fas fa-trash-alt"></i>
           </v-card>
         </v-flex>
+          </transition-group>
+        </draggable>
       </v-layout>
     </v-container>
   </v-card>

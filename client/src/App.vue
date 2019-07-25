@@ -69,14 +69,6 @@ export default {
       this.doing = doing;
       this.done = done;
     });
-
-    // db.collection("todos")
-    // .onSnapshot(function(querySnapshot) {
-    //   querySnapshot.forEach(function(doc) {
-    //         console.log(doc.data());
-    //     });
-    //     // console.log("Current data: ", doc.data());
-    // });
   }
 };
 </script>

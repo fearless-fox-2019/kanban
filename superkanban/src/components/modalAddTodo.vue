@@ -66,6 +66,7 @@ export default {
   methods: {
     create () {
       let newData = {
+        assignedTo: this.inputAssigned,
         title: this.inputTitle,
         description: this.inputDescription,
         point: this.inputPoint,

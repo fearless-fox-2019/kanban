@@ -79,6 +79,11 @@ export default {
         .then((docRef) => {
           console.log('massssooooookkkkk')
           console.log('Document written with ID: ', docRef.id)
+          this.inputAssigned = ''
+          this.inputTitle = ''
+          this.inputDescription = ''
+          this.inputPoint = ''
+          this.inputStatus = ''
         })
         .catch((error) => {
           console.error('Error adding document: ', error)

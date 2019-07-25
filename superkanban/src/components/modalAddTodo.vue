@@ -56,7 +56,7 @@ export default {
   data () {
     return {
       dialog: false,
-      inputAssigned : '',
+      inputAssigned: '',
       inputTitle: '',
       inputDescription: '',
       inputPoint: '',

@@ -17,23 +17,23 @@
 </template>
 
 <script>
-import modalDetail from "../components/modalDetail";
+import modalDetail from '../components/modalDetail'
 export default {
-  name: "cardContent",
-  props: ["dataTodo"],
+  name: 'cardContent',
+  props: ['dataTodo'],
   components: {
     modalDetail
   },
-  data() {
-    return {};
+  data () {
+    return {}
   }
-};
+}
 </script>
 
 <style scoped>
 * {
   font-family: "Varela Round", sans-serif;
   font-family: "Exo 2", sans-serif;
-  color : black;  
+  color : black;
 }
 </style>

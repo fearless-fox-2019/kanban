@@ -7,7 +7,7 @@
 
       <v-card>
         <v-card-title class="headline grey lighten-2" primary-title style="font-family: Varela Round, sans-serif; Exo 2, sans-serif;">{{ detail.title }}</v-card-title>
- 
+
         <v-divider></v-divider>
 
         <v-card-text style="color : black;">{{ detail.description }}</v-card-text>

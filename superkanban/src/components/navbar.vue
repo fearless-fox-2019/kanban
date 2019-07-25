@@ -10,16 +10,16 @@
 </template>
 
 <script>
-import modalAdd from "./modalAddTodo";
+import modalAdd from './modalAddTodo'
 export default {
-  name: "navbar",
+  name: 'navbar',
   components: {
     modalAdd
   },
-  data() {
-    return {};
+  data () {
+    return {}
   }
-};
+}
 </script>
 
 <style scoped>

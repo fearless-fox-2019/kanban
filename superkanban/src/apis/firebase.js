@@ -7,7 +7,7 @@ firebase.initializeApp({
   databaseURL: process.env.VUE_APP_DATABASE_URL,
   projectId: process.env.VUE_APP_PROJECT_ID,
   storageBucket: process.env.VUE_APP_STOREAGE_BUCKET,
-  appId:process.env.VUE_APP_APP_ID
+  appId: process.env.VUE_APP_APP_ID
 })
 
 const db = firebase.firestore()

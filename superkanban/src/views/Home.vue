@@ -50,10 +50,10 @@
   </v-content>
 </template>
 <script>
-import db from "../apis/firebase";
-import modalDetail from "../components/modalDetail";
-import cardContainer from "../components/cardContent";
-import draggable from "vuedraggable";
+import db from '../apis/firebase'
+import modalDetail from '../components/modalDetail'
+import cardContainer from '../components/cardContent'
+import draggable from 'vuedraggable'
 export default {
   props: {
     source: String
@@ -73,103 +73,103 @@ export default {
     done: []
   }),
   methods: {},
-  created() {
-    db.collection("kanban").onSnapshot(querySnapshot => {
+  created () {
+    db.collection('kanban').onSnapshot(querySnapshot => {
       // var list = [];
-      let tempBackLog = [];
-      let tempTodo = [];
-      let tempDoing = [];
-      let tempDone = [];
+      let tempBackLog = []
+      let tempTodo = []
+      let tempDoing = []
+      let tempDone = []
       querySnapshot.forEach(doc => {
-        let list = doc.data();
-        if (doc.data().status === "Back Log") {
-          tempBackLog.push({ id: doc.id, ...list });
-        } else if (list.status === "To-Do") {
-          tempTodo.push({ id: doc.id, ...list });
-        } else if (list.status === "Doing") {
-          tempDoing.push({ id: doc.id, ...list });
-        } else if (list.status === "Done") {
-          tempDone.push({ id: doc.id, ...list });
+        let list = doc.data()
+        if (doc.data().status === 'Back Log') {
+          tempBackLog.push({ id: doc.id, ...list })
+        } else if (list.status === 'To-Do') {
+          tempTodo.push({ id: doc.id, ...list })
+        } else if (list.status === 'Doing') {
+          tempDoing.push({ id: doc.id, ...list })
+        } else if (list.status === 'Done') {
+          tempDone.push({ id: doc.id, ...list })
         }
-      });
-      this.backLog = tempBackLog;
-      this.todo = tempTodo;
-      this.doing = tempDoing;
-      this.done = tempDone;
-    });
+      })
+      this.backLog = tempBackLog
+      this.todo = tempTodo
+      this.doing = tempDoing
+      this.done = tempDone
+    })
   },
   watch: {
-    backLog: function() {
-      var newData = this.backLog.filter(task => task.status !== "Back Log");
+    backLog: function () {
+      var newData = this.backLog.filter(task => task.status !== 'Back Log')
       newData.forEach(task => {
-        db.collection("kanban")
+        db.collection('kanban')
           .doc(task.id)
           .update({
-            status: "Back Log"
+            status: 'Back Log'
           })
           .then(() => {
-            task.status = "Back Log";
-            console.log("document updated");
-            console.log(newData);
+            task.status = 'Back Log'
+            console.log('document updated')
+            console.log(newData)
           })
           .catch(err => {
-            console.log(err);
-          });
-      });
+            console.log(err)
+          })
+      })
     },
-    todo: function() {
-      var newData = this.todo.filter(task => task.status !== "To-Do");
+    todo: function () {
+      var newData = this.todo.filter(task => task.status !== 'To-Do')
       newData.forEach(task => {
-        db.collection("kanban")
+        db.collection('kanban')
           .doc(task.id)
           .update({
-            status: "To-Do"
+            status: 'To-Do'
           })
           .then(() => {
-            task.status = "To-Do";
-            console.log("document updated");
+            task.status = 'To-Do'
+            console.log('document updated')
           })
           .catch(err => {
-            console.log(err);
-          });
-      });
+            console.log(err)
+          })
+      })
     },
-    doing: function() {
-      var newData = this.doing.filter(task => task.status !== "Doing");
+    doing: function () {
+      var newData = this.doing.filter(task => task.status !== 'Doing')
       newData.forEach(task => {
-        db.collection("kanban")
+        db.collection('kanban')
           .doc(task.id)
           .update({
-            status: "Doing"
+            status: 'Doing'
           })
           .then(() => {
-            task.status = "Doing";
-            console.log("document updated");
+            task.status = 'Doing'
+            console.log('document updated')
           })
           .catch(err => {
-            console.log(err);
-          });
-      });
+            console.log(err)
+          })
+      })
     },
-    done: function() {
-      var newData = this.done.filter(task => task.status !== "Done");
+    done: function () {
+      var newData = this.done.filter(task => task.status !== 'Done')
       newData.forEach(task => {
-        db.collection("kanban")
+        db.collection('kanban')
           .doc(task.id)
           .update({
-            status: "Done"
+            status: 'Done'
           })
           .then(() => {
-            task.status = "Done";
-            console.log("document updated");
+            task.status = 'Done'
+            console.log('document updated')
           })
           .catch(err => {
-            console.log(err);
-          });
-      });
+            console.log(err)
+          })
+      })
     }
   }
-};
+}
 </script>
 <style scoped>
 #content {

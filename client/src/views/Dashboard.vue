@@ -25,7 +25,7 @@
 <script>
 import Group from "../components/Group.vue";
 import CreateTask from "../components/CreateTask.vue";
-import db from "../../firebase.js"
+import db from "@/firebase.js"
 export default {
   components: {
     Group,

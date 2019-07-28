@@ -11,11 +11,11 @@
             </div>
             Description: {{task.data.description}}<br>
             Assigned to: {{task.data.assignee}}<br>
-            <div style="display: flex; justify-content: space-between">
-              <a class="control" @click="left(task.id, task.data.group)" v-if="title !== 'Previous Log'">🠄</a>
+            <div style="display: flex; justify-content: center">
+              <a class="control" @click="left(task.id, task.data.group)" v-if="title !== 'Previous Log'"><i class="fas fa-chevron-left"></i></a>
               <a style="border: none; cursor: default;" class="control" v-else>&nbsp;&nbsp;&nbsp;</a>
               <a class="control" @click="deleteTask(task.id)">Delete</a>
-              <a class="control" @click="right(task.id, task.data.group)" v-if="title !== 'Done'">🠆</a>
+              <a class="control" @click="right(task.id, task.data.group)" v-if="title !== 'Done'"><i class="fas fa-chevron-right"></i></a>
               <a style="border: none; cursor: default;" class="control" v-else>&nbsp;&nbsp;&nbsp;</a>
             </div>
           </div>
@@ -26,7 +26,7 @@
 
 <script>
 
-import db from '../../firebase.js'
+import db from '@/firebase.js'
 
 export default {
   props: ['title', 'tasks'],
@@ -73,7 +73,7 @@ export default {
   margin: 0.6rem;
   height: auto;
   overflow: hidden;
-  background-color: black;
+  background-color: gainsboro;
 }
 
 .heading {
@@ -107,7 +107,7 @@ export default {
 }
 
 .card {
-  margin: 0.6rem 0;
+  margin: 0.6rem;
   padding: 0;
   font-size: 0.9rem;
   border-color: grey;

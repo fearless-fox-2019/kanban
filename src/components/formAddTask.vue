@@ -21,7 +21,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <input @click="addTask" class="btn btn-success d-flex justify-content-end" type="submit" value="Save" />
+                    <input @click="addTask" class="btn btn-success d-flex justify-content-end" type="submit" value="Save" data-dismiss="modal" />
                 </div>
                 </div>
 

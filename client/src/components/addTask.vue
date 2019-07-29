@@ -7,7 +7,7 @@
                         <b-input placeholder="Input Title" v-model="title" maxlength="15"></b-input>
                     </b-field>
                     <b-field label="Assigned To :">
-                        <b-input placeholder="Assign this task" v-model="assign" maxlength="15"></b-input>
+                        <b-input placeholder="Assign this task" v-model="assign" maxlength="10"></b-input>
                     </b-field>
                 </article>
             </div>
@@ -15,7 +15,7 @@
                 <article class="tile is-child box">
                     <b-field label="Description"
                         :label-position="labelPosition">
-                        <b-input placeholder="Specify the task" maxlength="200" type="textarea"></b-input>
+                        <b-input v-model="description" placeholder="Specify the task" maxlength="20" type="textarea"></b-input>
                     </b-field>
                 </article>
             </div>
@@ -59,6 +59,7 @@
                 this.title = ''
                 this.description = ''
                 this. assign = ''
+                this.show = false
             },
             showForm(){
                 this.show = true
